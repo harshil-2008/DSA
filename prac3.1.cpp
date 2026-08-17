@@ -1,78 +1,77 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 int main()
 {
-    int A[]={6,2,87,55,23};
-    int B[]={};
-    int n=sizeof(A)/sizeof(A[0]);
-    int t=n,size=n;
+    int A[]={2,45,67,12,98,56,76,23, 31};
 
-    while(t--){
-    for(int i=0;i<size-1;i++)
+    int size=sizeof(A)/sizeof(A[0]);
+
+    //Bubble sort
+    for(int i=0; i<size; i++)
     {
-        if(A[i]>A[i+1])
+        for(int j=0;j<size-1; j++)
         {
-            int temp;
-            temp=A[i];
-            A[i]=A[i+1];
-            A[i+1]=temp;
-        }
-    }
-    size--;
-    }
-
-     cout<<"Bubble sorted: "<<endl;
-    for(int i=0;i<n;i++)
-    {
-        cout<<A[i]<<endl;
-    }
-    
-    for(int i=0;i<n-1;i++)
-    {
-        int min=A[i];
-        int temp;
-        int a1=i;
-
-
-        for(int j=i+1; j<n;j++)
-        {
-            if(min>A[j])
+            int temp=0;
+            if(A[j]>A[j+1])
             {
-                a1=j;
-                min=A[j]; 
+                temp=A[j];
+                A[j]=A[j+1];
+                A[j+1]=temp;
             }
         }
-         temp=A[i];
-        A[i]=A[a1];
-        A[a1]=temp;
     }
-
-    cout<<"Selection sorted: "<<endl;
-    for(int i=0;i<n;i++)
+    cout<<"Selection Sort: "<<endl;
+    for(int i=0; i<size; i++)
     {
         cout<<A[i]<<endl;
     }
 
-    for(int i=1;i<n;i++)
+
+    //Selection Sorting
+
+    for(int i = 0; i < size - 1; i++)
+    {
+        int min = i;
+
+        for(int j = i + 1; j < size; j++)
+        {
+            if(A[j] < A[min])
+            {
+                min = j;
+            }
+        }
+
+        int temp = A[i];
+        A[i] = A[min];
+        A[min] = temp;
+    }
+
+    cout << "Selection Sorted: " << endl;
+
+    for(int i = 0; i < size; i++)
+    {
+        cout << A[i] << endl;
+    }
+
+
+    //Insertion Sorting
+    for(int i=1; i<size;i++)
     {
         int key=A[i];
         int j=i-1;
 
-        while(j>=0 && A[j]>key)
+        while(j>0 && A[j]>key)
         {
             A[j+1]=A[j];
             j--;
         }
-
         A[j+1]=key;
     }
+    cout << "Insertion Sorted: " << endl;
 
-    cout<<"Insertion sorted: "<<endl;
-
-    for(int i=0;i<n;i++)
+    for(int i = 0; i < size; i++)
     {
-        cout<<A[i]<<endl;
+        cout << A[i] << endl;
     }
-    return 0;
 }
